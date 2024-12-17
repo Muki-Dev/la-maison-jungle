@@ -1,10 +1,12 @@
 import Banner from './components/Banner';
-import './styles/App.css';
+import Cart from './components/Cart';
+
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Banner />
+      <Cart />
     </div>
   );
 }
