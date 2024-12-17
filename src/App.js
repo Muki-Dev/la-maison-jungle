@@ -1,5 +1,6 @@
 import Banner from './components/Banner';
 import Cart from './components/Cart';
+import ShoppingList from './components/ShoppingList';
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Banner />
       <Cart />
+      <ShoppingList />
     </div>
   );
 }
