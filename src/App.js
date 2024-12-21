@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import './styles/Layout.css';
 
 
+
 function App() {
   const [cart,updateCart] = useState([])
   return (
@@ -14,7 +15,7 @@ function App() {
        <Banner>
           <img className='lmj-logo' src ={logo} alt='lmj-logo' />
           <h1 className='lmj-title'>La maison Jungle</h1>
-       </Banner>
+       </Banner> 
        <div className='lmj-layout-inner'>
           <Cart cart={ cart } updateCart={ updateCart } />
           <ShoppingList cart={ cart } updateCart={ updateCart } />
