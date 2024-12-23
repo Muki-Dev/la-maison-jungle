@@ -10,18 +10,18 @@ function ShoppingList({cart,updateCart}){
             acc.includes(elem.category) ? acc : acc.concat(elem.category), []
     )
 
-    function addToCart(name,price){
-        const plantSaved = cart.find((plant) => plant.name === name )
+    function addToCart(id,name,price){
+        const plantSaved = cart.find((plant) => plant.id === id )
         if(plantSaved){
-            const filteredPlantSaved = cart.filter((plant) => plant.name !== name)
-            updateCart([...filteredPlantSaved,{name,price,amount: plantSaved.amount + 1}])
+            const filteredPlantSaved = cart.filter((plant) => plant.id !== id)
+            updateCart([...filteredPlantSaved,{id,name,price,amount: plantSaved.amount + 1}])
         }else{
-            updateCart([...cart,{name,price,amount:1}])
+            updateCart([...cart,{id,name,price,amount:1}])
         }
     }
 
-         function deleteCart(name){
-            const newCart = cart.filter((plant) => plant.name !== name);
+         function deleteCart(id){
+            const newCart = cart.filter((plant) => plant.id !== id);
            updateCart(newCart); // Supprime l'article du panier
          }
 
@@ -37,8 +37,8 @@ function ShoppingList({cart,updateCart}){
                     plantList.map(({cover,name,id,light,water,price,category}) => !activeCategory || activeCategory === category ? (
                        <div key={id}>
                             <PlantItem cover={cover} name={name} id={id} light={light} water={water} />
-                            <button onClick={() => addToCart(name,price)}>Ajouter</button>
-                            <button onClick={() => deleteCart(name)}>Supprimer</button>
+                            <button onClick={() => addToCart(id,name,price)}>Ajouter</button>
+                            <button onClick={() => deleteCart(id)}>Supprimer</button>
                        </div> 
                         
                     ): null
