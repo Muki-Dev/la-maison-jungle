@@ -19,6 +19,12 @@ function ShoppingList({cart,updateCart}){
             updateCart([...cart,{name,price,amount:1}])
         }
     }
+
+         function deleteCart(name){
+            const newCart = cart.filter((plant) => plant.name !== name);
+           updateCart(newCart); // Supprime l'article du panier
+         }
+
     return(
         <div className="lmj-shopping-list">
            <Categories
@@ -32,6 +38,7 @@ function ShoppingList({cart,updateCart}){
                        <div key={id}>
                             <PlantItem cover={cover} name={name} id={id} light={light} water={water} />
                             <button onClick={() => addToCart(name,price)}>Ajouter</button>
+                            <button onClick={() => deleteCart(name)}>Supprimer</button>
                        </div> 
                         
                     ): null

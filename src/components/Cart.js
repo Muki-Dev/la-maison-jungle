@@ -4,6 +4,7 @@ import '../styles/Cart.css'
 function Cart({ cart, updateCart }) {
 	const [isOpen, setIsOpen] = useState(true)
 
+
 	const total = cart.reduce(
 		(acc, plantType) => acc + plantType.amount * plantType.price,
 		0
@@ -33,7 +34,7 @@ function Cart({ cart, updateCart }) {
 						))}
 					</ul>
 					<h3>Total :{total}€</h3>
-					<button onClick={() => updateCart([])}>Vider le panier</button>
+					<button onClick={() => updateCart([])}>Vider le panier</button> 
 				</div>
 			) : (
 				<div>Votre panier est vide</div>
