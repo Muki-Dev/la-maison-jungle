@@ -3,9 +3,24 @@ import PlantItem from "./PlantItem";
 import Categories from "./Categories";
 import "../styles/ShoppingList.css";
 import { useState } from "react";
+import Modal from "./Modal";
 
-function ShoppingList({ cart, updateCart }) {
+function ShoppingList({ cart, updateCart,items }) {
   const [activeCategory, setActiveCategory] = useState([]);
+
+  const [selectedItem,setSelectedItem] = useState(null);
+
+  const [isModalOpen,setIsModalOpen] = useState(false);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedItem(null)
+  }
 
   const categories = plantList.reduce(
     (acc, elem) =>
@@ -43,6 +58,18 @@ function ShoppingList({ cart, updateCart }) {
 
   return (
     <div className="lmj-shopping-list">
+      <ul>
+        {
+          items.map((item) => (
+            <li key={item.id} onClick={() => handleItemClick(item)}>{item.name}</li>
+          ))
+        }
+      </ul>
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} item={selectedItem} 
+        />
+
       <Categories
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
