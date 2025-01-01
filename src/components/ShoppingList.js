@@ -61,6 +61,12 @@ function ShoppingList({ cart, updateCart,items=[]}) {
 
   return (
     <div className="lmj-shopping-list">
+       <Categories
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+        categories={categories}
+        onToggle={toggleCategory}
+      />
       <ul className="plant-list">
             {items && items.length > 0 ? (
             items.map((item) => (
@@ -79,12 +85,6 @@ function ShoppingList({ cart, updateCart,items=[]}) {
         item={selectedItem} 
         />
 
-      <Categories
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        categories={categories}
-        onToggle={toggleCategory}
-      />
       <ul className="lmj-plant-list">
         {plantList
           .filter(
