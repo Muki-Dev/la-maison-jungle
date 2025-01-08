@@ -9,3 +9,47 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+.plant-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Disposition en grille flexible */
+	gap: 15px; /* Espacement entre les éléments */
+	justify-content: center; /* Centrer la grille horizontalement */
+  }
+  
+  .plant-list li {
+	background: #f0f0f0; /* Fond gris clair */
+	border-radius: 8px; /* Coins arrondis */
+	padding: 10px;
+	text-align: center;
+	cursor: pointer;
+	transition: background 0.2s ease;
+  }
+  
+  .plant-list li:hover {
+	background: #e0e0e0; /* Changement léger au survol */
+  }
+  
+  .plant-list img {
+	width: 60px; /* Taille uniforme des images */
+	height: 60px;
+	border-radius: 8px; /* Coins légèrement arrondis */
+	object-fit: cover; /* Pour bien remplir le cadre */
+	margin-bottom: 8px; /* Espacement sous l'image */
+  }
+  
+  .plant-list span {
+	font-size: 14px;
+	color: #333;
+	font-weight: bold;
+  }
+  
+  .plant-list p {
+	text-align: center;
+	font-size: 14px;
+	color: #555;
+	margin-top: 20px;
+  }
+  
