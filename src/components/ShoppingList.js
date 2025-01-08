@@ -56,7 +56,7 @@ function ShoppingList({ cart, updateCart}) {
             ({ category }) =>
               activeCategory.length === 0 || activeCategory.includes(category)
           )
-          .map(({ cover, name, id, light, water, price }) => (
+          .map(({ cover, name, id, light, water, price,description }) => (
             <div key={id}>
               <PlantItem
                 cover={cover}
@@ -64,6 +64,7 @@ function ShoppingList({ cart, updateCart}) {
                 id={id}
                 light={light}
                 water={water}
+                description={description}
               />
               <button onClick={() => addToCart(id, name, price)}>Ajouter</button>
               <button onClick={() => deleteCart(id)}>Supprimer</button>
