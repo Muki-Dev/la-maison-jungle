@@ -5,7 +5,7 @@ import ShoppingList from './components/ShoppingList';
 import logo from './assets/logo.png'
 import Footer from './components/Footer';
 import './styles/Layout.css';
-import { plantList } from './datas/plantList';
+
 
 
 
@@ -19,7 +19,7 @@ function App() {
        </Banner> 
        <div className='lmj-layout-inner'>
           <Cart cart={ cart } updateCart={ updateCart } />
-          <ShoppingList items={plantList} cart={ cart } updateCart={ updateCart } />
+          <ShoppingList  cart={ cart } updateCart={ updateCart } />
        </div>
       <Footer />
     </div>

@@ -2,28 +2,10 @@ import { useState } from "react";
 import { plantList } from "../datas/plantList";
 import PlantItem from "./PlantItem";
 import Categories from "./Categories";
-import Modal from "./Modal";
 import "../styles/ShoppingList.css";
 
-
-
-function ShoppingList({ cart, updateCart,items=[]}) {
+function ShoppingList({ cart, updateCart}) {
   const [activeCategory, setActiveCategory] = useState([]);
-
-  const [selectedItem,setSelectedItem] = useState(null);
-
-  const [isModalOpen,setIsModalOpen] = useState(false);
-
-  const handleItemClick = (item) => {
-    console.log("Item sélectionné :", item);
-    setSelectedItem(item);
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedItem(null)
-  }
 
   const categories = plantList.reduce(
     (acc, elem) =>
@@ -66,24 +48,7 @@ function ShoppingList({ cart, updateCart,items=[]}) {
         setActiveCategory={setActiveCategory}
         categories={categories}
         onToggle={toggleCategory}
-      />
-      <ul className="plant-list">
-            {items && items.length > 0 ? (
-            items.map((item) => (
-            <li key={item.id} onClick={() => handleItemClick(item)}>
-              <img src={item.cover} alt={item.name} style={{ width: '50px' }} />
-              {item.name}
-            </li>
-          ))
-        ) : (
-          <p>Aucune plante disponible.</p>
-        )}
-      </ul>
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
-        item={selectedItem} 
-        />
+      />  
 
       <ul className="lmj-plant-list">
         {plantList
