@@ -1,35 +1,20 @@
+import { useDispatch } from "react-redux";
+import { addToCart, removeToCart } from "../features/CartSlice";
 import { useState } from "react";
 import { plantList } from "../datas/plantList";
 import PlantItem from "./PlantItem";
 import Categories from "./Categories";
 import "../styles/ShoppingList.css";
 
-function ShoppingList({ cart, updateCart}) {
+function ShoppingList() {
   const [activeCategory, setActiveCategory] = useState([]);
+  const dispatch = useDispatch();
 
   const categories = plantList.reduce(
     (acc, elem) =>
       acc.includes(elem.category) ? acc : acc.concat(elem.category),
     []
   );
-
-  function addToCart(id, name, price) {
-    const plantSaved = cart.find((plant) => plant.id === id);
-    if (plantSaved) {
-      const filteredPlantSaved = cart.filter((plant) => plant.id !== id);
-      updateCart([
-        ...filteredPlantSaved,
-        { id, name, price, amount: plantSaved.amount + 1 },
-      ]);
-    } else {
-      updateCart([...cart, { id, name, price, amount: 1 }]);
-    }
-  }
-
-  function deleteCart(id) {
-    const newCart = cart.filter((plant) => plant.id !== id);
-    updateCart(newCart); // Supprime l'article du panier
-  }
 
   const toggleCategory = (category) => {
     if (activeCategory.includes(category)) {
@@ -66,8 +51,8 @@ function ShoppingList({ cart, updateCart}) {
                 water={water}
                 description={description}
               />
-              <button onClick={() => addToCart(id, name, price)}>Ajouter</button>
-              <button onClick={() => deleteCart(id)}>Supprimer</button>
+              <button onClick={() => dispatch(addToCart({id, name, price}))}>Ajouter</button>
+              <button onClick={() => dispatch(removeToCart(id))}>Supprimer</button>
             </div>
           ))}
       </ul>
