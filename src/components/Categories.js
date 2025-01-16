@@ -1,4 +1,8 @@
-function Categories({ activeCategory, categories, onToggle }) {
+import { useSelector,useDispatch } from "react-redux";
+import { toggleCategory,clearCategory } from "../features/CategorySlice";
+function Categories({categories}) {
+  const dispatch = useDispatch();
+  const activeCategories = useSelector((state) => state.category.activeCategories)
     return (
       <div className="lmj-categories">
         <ul>
@@ -7,15 +11,15 @@ function Categories({ activeCategory, categories, onToggle }) {
               <label>
                 <input
                   type="checkbox"
-                  checked={activeCategory.includes(cat)}
-                  onChange={() => onToggle(cat)}
+                  checked={activeCategories.includes(cat)}
+                  onChange={() => dispatch(toggleCategory(cat))}
                 />
                 {cat}
               </label>
             </li>
           ))}
         </ul>
-        <button onClick={() => activeCategory.splice(0, activeCategory.length)}>
+        <button onClick={() => dispatch(clearCategory())}>
           Réinitialiser
         </button>
       </div>

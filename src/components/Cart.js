@@ -1,8 +1,12 @@
+import { useSelector,useDispatch } from 'react-redux'
+import { clearToCart } from '../features/CartSlice'
 import { useState,useEffect } from 'react'
 import '../styles/Cart.css'
 
-function Cart({ cart, updateCart }) {
+function Cart() {
 	const [isOpen, setIsOpen] = useState(true)
+	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.cart)
 
 
 	const total = cart.reduce(
@@ -34,7 +38,7 @@ function Cart({ cart, updateCart }) {
 						))}
 					</ul>
 					<h3>Total :{total}€</h3>
-					<button onClick={() => updateCart([])}>Vider le panier</button> 
+					<button onClick={() =>dispatch(clearToCart())}>Vider le panier</button> 
 				</div>
 			) : (
 				<div>Votre panier est vide</div>

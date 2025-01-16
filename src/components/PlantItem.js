@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal,closeModal } from "../features/modalSlice";
 import ReactDOM from "react-dom";
 import CareScale from "./CareScale";
 import "../styles/PlantItem.css";
 
 function PlantItem({ name, cover, id, light, water, description }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
+    const isModalOpen = useSelector(state => state.modal.isOpen); 
 
     const handleItemClick = () => {
-        setIsModalOpen(true);
+        dispatch(openModal({ id, name, cover, light, water, description }));
     };
 
     const handleCloseModal = () => {
-        setIsModalOpen(false);
+        dispatch(closeModal());
     };
 
     return (
@@ -33,7 +35,7 @@ function PlantItem({ name, cover, id, light, water, description }) {
                         <p><strong>Light Level:</strong> {light}</p>
                         <p><strong>Water Level:</strong> {water}</p>
                         <p><strong>Description:</strong> {description}</p>
-                        <button onClick={handleCloseModal}>Fermer</button>
+                        <button onClick={handleCloseModal}>Close</button>
                     </div>
                 </div>,
                 document.body
