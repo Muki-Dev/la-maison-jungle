@@ -17,3 +17,19 @@
     height: 45px;
     width: 45px;
 }
+
+.lmj-nav-links {
+    margin-top: 10px;
+}
+
+.lmj-link {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.lmj-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
