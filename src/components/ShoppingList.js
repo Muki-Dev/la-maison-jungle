@@ -39,8 +39,8 @@ function ShoppingList() {
                 water={water}
                 description={description}
               />
-              <button onClick={() => dispatch(addToCart({id, name, price}))}>Ajouter</button>
-              <button onClick={() => dispatch(removeToCart(id))}>Supprimer</button>
+              <button className="btn-add" onClick={() => dispatch(addToCart({id, name, price}))}>Ajouter</button>
+              <button className="btn-remove" onClick={() => dispatch(removeToCart(id))}>Supprimer</button>
             </div>
           ))}
       </ul>
