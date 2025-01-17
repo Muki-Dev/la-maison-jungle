@@ -1,29 +1,30 @@
-.lmj-banner{
-    color: black;
-    text-align: right;
-    padding: 32px;
-    border-bottom: solid 3px black;
+.lmj-banner {
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
-    align-items: center;
-}
-
-.lmj-title{
-    padding-left: 32px;
+    justify-content: space-between; /* Espace entre le titre et la navigation */
+    align-items: center; /* Aligner verticalement */
+    padding: 10px 20px;
+    background-color: #f4f4f4; /* Couleur de fond pour le header */
+    border-bottom: 2px solid #ccc;
 }
 
 .lmj-logo{
-    height: 45px;
     width: 45px;
+    height: 45px;
 }
 
-.lmj-nav-links {
-    margin-top: 10px;
+.lmj-banner-title {
+    display: flex;
+    align-items: center; /* Aligner verticalement le contenu */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lmj-banner-nav {
+    display: flex;
+    gap: 15px; /* Espace entre les liens */
 }
 
 .lmj-link {
-    margin-right: 15px;
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
@@ -32,4 +33,16 @@
 .lmj-link:hover {
     text-decoration: underline;
     color: #0056b3;
+}
+
+/* media queries */
+@media (max-width: 768px) {
+    .lmj-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .lmj-banner-nav {
+        margin-top: 10px;
+    }
 }
