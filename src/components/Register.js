@@ -9,11 +9,11 @@ function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleLogin = () => {
+    const handleRegister = () => {
         dispatch(login());
         navigate('/')
     }
-    
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -61,7 +61,7 @@ function Register() {
                         required
                     />
                 </div>
-                <button onClick={handleLogin} type="submit">S'inscrire</button>
+                <button onClick={handleRegister} type="submit">S'inscrire</button>
             </form>
         </div>
     );
