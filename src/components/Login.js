@@ -1,7 +1,17 @@
 import React, { useState } from "react";
+import { login } from "../features/AuthSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "../styles/Auth.css";
 
 function Login() {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleLogin = () => {
+        dispatch(login());
+        navigate('/');
+    }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -34,7 +44,7 @@ function Login() {
                         required
                     />
                 </div>
-                <button type="submit">Se connecter</button>
+                <button onClick={handleLogin} type="submit">Se connecter</button>
             </form>
         </div>
     );
