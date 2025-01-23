@@ -1,27 +1,37 @@
-import { Link } from "react-router-dom";
-import { useDispatch} from 'react-redux';
-import { useNavigate} from 'react-router-dom';
-import { logout } from '../features/userSlice';
+import { useDispatch,useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../features/AuthSlice";
 import "../styles/Banner.css";
 
 function Banner({ children }) {
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
   const dispatch = useDispatch();
-const navigate = useNavigate() 
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-      dispatch(logout());
-      navigate('/login'); // Redirige vers la page de connexion
-  };
-
+    dispatch(logout());
+    navigate('/login');
+  }
   return (
     <div className="lmj-banner">
-      <div className="lmj-banner-title">{children}</div>
-      <nav className="lmj-banner-nav">
-        <Link to="/login" className="lmj-link">Connexion</Link>
-        <Link to="/register" className="lmj-link">Inscription</Link>
-        <button onClick={handleLogout}>Déconnexion</button> 
-      </nav>
-    </div>
+    {children}
+    <nav>
+      {isSignedIn ? (
+        <button onClick={handleLogout} className="lmj-button">
+          Déconnexion
+        </button>
+      ) : (
+        <>
+          <button onClick={() => navigate("/login")} className="lmj-button">
+            Connexion
+          </button>
+          <button onClick={() => navigate("/register")} className="lmj-button">
+            Inscription
+          </button>
+        </>
+      )}
+    </nav>
+  </div>
   );
 }
 

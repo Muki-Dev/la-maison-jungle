@@ -1,7 +1,19 @@
 import React, { useState } from "react";
+import { login } from "../features/AuthSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "../styles/Auth.css";
 
 function Register() {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleRegister = () => {
+        dispatch(login());
+        navigate('/')
+    }
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -49,7 +61,7 @@ function Register() {
                         required
                     />
                 </div>
-                <button type="submit">S'inscrire</button>
+                <button onClick={handleRegister} type="submit">S'inscrire</button>
             </form>
         </div>
     );
