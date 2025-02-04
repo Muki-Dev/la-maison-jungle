@@ -1,0 +1,100 @@
+/* Styles for the UserProfile component */
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  .profile-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  .profile-header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .profile-header p {
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+  
+  /* User Details Section */
+  .user-details {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .user-details h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+  
+  .user-details .info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  
+  .user-details .info span {
+    color: #4b5563;
+    font-size: 0.9rem;
+  }
+  
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .actions button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .actions .edit {
+    background-color: #3b82f6;
+    color: #ffffff;
+  }
+  
+  .actions .edit:hover {
+    background-color: #2563eb;
+  }
+  
+  .actions .logout {
+    background-color: #ef4444;
+    color: #ffffff;
+  }
+  
+  .actions .logout:hover {
+    background-color: #dc2626;
+  }
+  
