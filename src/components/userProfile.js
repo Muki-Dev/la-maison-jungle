@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserProfile.css";
+import "../styles/userProfile.css";
 
 const UserProfile = () => {
   // Données utilisateur (on remplacera plus tard avec des données dynamiques)

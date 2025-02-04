@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import logo from "./assets/logo.png";
 import "./styles/Layout.css";
+import UserProfile from "./components/userProfile";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 </div>
               }
             />
+            <Route path="/userProfil" element={<UserProfile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
