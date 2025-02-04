@@ -12,14 +12,24 @@ function Banner({ children }) {
     dispatch(logout());
     navigate('/login');
   }
+
+  const handleUserProfil = () => {
+    navigate('/userProfil')
+  }
+
   return (
     <div className="lmj-banner">
     {children}
     <nav>
       {isSignedIn ? (
-        <button onClick={handleLogout} className="lmj-button">
-          Déconnexion
-        </button>
+        <>
+            <button onClick={handleLogout} className="lmj-button">
+              Déconnexion
+            </button>
+            <button onClick={handleUserProfil} className="lmj-button">Modifier mon Profile</button>
+            
+        </>
+       
       ) : (
         <>
           <button onClick={() => navigate("/login")} className="lmj-button">
