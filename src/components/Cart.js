@@ -1,6 +1,6 @@
 import { useSelector,useDispatch } from 'react-redux'
 import { clearToCart } from '../features/CartSlice'
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import '../styles/Cart.css'
 
 function Cart() {
@@ -13,11 +13,6 @@ function Cart() {
 		(acc, plantType) => acc + plantType.amount * plantType.price,
 		0
 	)
-
-    useEffect(() => {
-        document.title = `LMJ: ${total}€ d'achats`
-
-    },[total])
 
 	return isOpen ? (
 		<div className='lmj-cart'>
