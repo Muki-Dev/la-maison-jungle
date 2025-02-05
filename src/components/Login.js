@@ -17,28 +17,37 @@ function Login() {
     setError(""); // Réinitialise l'erreur avant chaque tentative
 
     try {
-      const response = await fetch.post("https://api.example.com/login", {
-        email,
-        password,
+      const response = await fetch("https://api.example.com/login", {
+        method: "POST", // Spécifie la méthode POST
+        headers: {
+          "Content-Type": "application/json", // Indique que les données sont au format JSON
+        },
+        body: JSON.stringify({ email, password }), // Convertit les données en JSON
       });
 
+      if (!response.ok) {
+        // Gère les erreurs HTTP (ex: 400, 401, 500, etc.)
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Erreur lors de la connexion.");
+      }
+
+      const data = await response.json(); // Parse la réponse JSON
+
       // Stocke le token dans localStorage
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", data.token);
 
       // Mets à jour le state Redux pour indiquer que l'utilisateur est connecté
       dispatch(
         login({
-          email: response.data.user.email,
-          token: response.data.token,
+          email: data.user.email,
+          token: data.token,
         })
       );
 
       // Redirige l'utilisateur après connexion
       navigate("/");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Une erreur est survenue. Réessayez."
-      );
+      setError(err.message || "Une erreur est survenue. Réessayez.");
     }
   };
 
